@@ -1,6 +1,6 @@
 import torch
 
-from mechanomorph.torch.sim._deformable_cell_model._contact import (
+from mechanomorph._torch.sim._deformable_cell_model._contact import (
     average_vector_by_group,
     find_contacting_vertices_from_cell_map,
     group_contacting_vertices_union_find,

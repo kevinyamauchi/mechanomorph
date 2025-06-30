@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from mechanomorph.torch.sim._deformable_cell_model._mesh_utils import (
+from mechanomorph._torch.sim._deformable_cell_model._mesh_utils import (
     compute_face_unit_normals,
     get_face_vertex_mapping,
 )

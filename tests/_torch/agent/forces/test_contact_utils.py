@@ -1,6 +1,6 @@
 import torch
 
-from mechanomorph.torch.sim.agent.forces._contact_utils import (
+from mechanomorph._torch.sim.agent.forces._contact_utils import (
     vectors_distances_between_agents,
 )
 

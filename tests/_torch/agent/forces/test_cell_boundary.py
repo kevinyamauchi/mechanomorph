@@ -2,12 +2,12 @@ import numpy as np
 import torch
 from scipy.ndimage import distance_transform_edt
 
-from mechanomorph.data import ScalarField, VectorField
-from mechanomorph.torch.sim.agent.forces import (
+from mechanomorph._torch.sim.agent.forces import (
     cell_boundary_adhesion_potential,
     cell_boundary_repulsion_potential,
 )
-from mechanomorph.torch.sim.agent.utils.field import field_gradient
+from mechanomorph._torch.sim.agent.utils.field import field_gradient
+from mechanomorph.data import ScalarField, VectorField
 
 
 def test_boundary_adhesion_potential():

@@ -2,7 +2,7 @@ from math import sqrt
 
 import torch
 
-from mechanomorph.torch.sim.agent.forces import cell_cell_adhesion_potential
+from mechanomorph._torch.sim.agent.forces import cell_cell_adhesion_potential
 
 
 def test_cell_cell_adhesion_potential():

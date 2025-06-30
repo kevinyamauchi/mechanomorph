@@ -1,6 +1,6 @@
 import torch
 
-from mechanomorph.torch.sim.agent.forces import biased_random_locomotion_force
+from mechanomorph._torch.sim.agent.forces import biased_random_locomotion_force
 
 
 def test_biased_random_locomotion():

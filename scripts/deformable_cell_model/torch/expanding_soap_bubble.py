@@ -10,11 +10,11 @@ import torch
 from skimage.draw import ellipsoid
 from skimage.measure import marching_cubes
 
-from mechanomorph.torch.sim._deformable_cell_model._forces import (
+from mechanomorph._torch.sim._deformable_cell_model._forces import (
     compute_cell_volume,
     compute_vertex_forces,
 )
-from mechanomorph.torch.sim._deformable_cell_model._mesh_utils import (
+from mechanomorph._torch.sim._deformable_cell_model._mesh_utils import (
     get_face_vertex_mapping,
     get_per_cell_face_vertex_mapping,
 )

@@ -1,6 +1,6 @@
 import torch
 
-from mechanomorph.torch.sim._deformable_cell_model._geometry_utils import (
+from mechanomorph._torch.sim._deformable_cell_model._geometry_utils import (
     find_intersecting_bounding_boxes,
 )
 

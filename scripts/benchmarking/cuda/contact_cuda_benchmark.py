@@ -6,12 +6,12 @@ import numpy as np
 import torch
 from skimage.measure import marching_cubes
 
-from mechanomorph.torch.sim._deformable_cell_model._contact import (
+from mechanomorph._torch.sim._deformable_cell_model._contact import (
     average_vector_by_group,
     find_contacting_vertices_from_cell_map,
     group_contacting_vertices_union_find,
 )
-from mechanomorph.torch.sim._deformable_cell_model._geometry_utils import (
+from mechanomorph._torch.sim._deformable_cell_model._geometry_utils import (
     find_intersecting_bounding_boxes,
 )
 

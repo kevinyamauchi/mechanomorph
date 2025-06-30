@@ -1,14 +1,14 @@
 """Computation of forces for the agent-based models."""
 
-from mechanomorph.torch.sim.agent.forces._cell_boundary import (
+from mechanomorph._torch.sim.agent.forces._cell_boundary import (
     cell_boundary_adhesion_potential,
     cell_boundary_repulsion_potential,
 )
-from mechanomorph.torch.sim.agent.forces._cell_cell import (
+from mechanomorph._torch.sim.agent.forces._cell_cell import (
     cell_cell_adhesion_potential,
     cell_cell_repulsion_potential,
 )
-from mechanomorph.torch.sim.agent.forces._locomotion import (
+from mechanomorph._torch.sim.agent.forces._locomotion import (
     biased_random_locomotion_force,
 )
 

@@ -2,7 +2,7 @@ from math import sqrt
 
 import torch
 
-from mechanomorph.torch.sim.agent.utils.field import field_gradient
+from mechanomorph._torch.sim.agent.utils.field import field_gradient
 
 
 def test_field_gradient():

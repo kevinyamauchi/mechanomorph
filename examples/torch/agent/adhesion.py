@@ -6,15 +6,15 @@ import torch
 from scipy.ndimage import distance_transform_edt
 from tqdm import trange
 
-from mechanomorph.data import ScalarField, VectorField
-from mechanomorph.torch.sim.agent.forces import (
+from mechanomorph._torch.sim.agent.forces import (
     biased_random_locomotion_force,
     cell_boundary_adhesion_potential,
     cell_boundary_repulsion_potential,
     cell_cell_adhesion_potential,
     cell_cell_repulsion_potential,
 )
-from mechanomorph.torch.sim.agent.utils.field import field_gradient
+from mechanomorph._torch.sim.agent.utils.field import field_gradient
+from mechanomorph.data import ScalarField, VectorField
 
 
 def random_3d_unit_vectors(n_vectors: int, device: str = "cpu") -> torch.Tensor:
