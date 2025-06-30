@@ -10,14 +10,14 @@ from jax import Array as JaxArray
 from scipy.ndimage import distance_transform_edt
 from tqdm import trange
 
-from mechanomorph.jax.agent.forces import (
+from mechanomorph.sim.agent.forces import (
     biased_random_locomotion_force,
     cell_boundary_adhesion_potential,
     cell_boundary_repulsion_potential,
     cell_cell_adhesion_potential,
     cell_cell_repulsion_potential,
 )
-from mechanomorph.jax.data import (
+from mechanomorph.sim.data import (
     sample_scalar_field_linear,
     sample_scalar_field_nearest,
     sample_vector_field_nearest,

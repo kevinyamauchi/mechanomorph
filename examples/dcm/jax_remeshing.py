@@ -7,8 +7,8 @@ import optax
 import pyvista as pv
 from matplotlib import pyplot as plt
 
-from mechanomorph.jax.dcm.remeshing import remesh_edge_split_single_cell
-from mechanomorph.jax.dcm.utils import pack_mesh_to_cells
+from mechanomorph.sim.dcm.remeshing import remesh_edge_split_single_cell
+from mechanomorph.sim.dcm.utils import pack_mesh_to_cells
 
 batched_edge_split = jax.vmap(
     remesh_edge_split_single_cell,

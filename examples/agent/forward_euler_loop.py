@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 from jax import Array as JaxArray
 
 # Import from mechanomorph (adjust path as needed for your setup)
-from mechanomorph.jax.agent.integration import make_simulation_loop
+from mechanomorph.sim.agent.integration import make_simulation_loop
 
 
 class ParticleState(NamedTuple):

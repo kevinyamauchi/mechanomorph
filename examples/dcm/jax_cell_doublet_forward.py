@@ -13,15 +13,15 @@ import napari
 import numpy as np
 from jax import Array as JaxArray
 
-from mechanomorph.jax.dcm.forces import (
+from mechanomorph.mesh import make_cube_doublet
+from mechanomorph.sim.dcm.forces import (
     average_vector_by_label,
     compute_cell_pressure_forces,
     compute_cell_surface_tension_forces,
     find_contacting_vertices,
     label_vertices,
 )
-from mechanomorph.jax.dcm.utils import detect_aabb_intersections, pack_mesh_to_cells
-from mechanomorph.mesh import make_cube_doublet
+from mechanomorph.sim.dcm.utils import detect_aabb_intersections, pack_mesh_to_cells
 
 
 class SimulationState(NamedTuple):

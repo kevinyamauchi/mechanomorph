@@ -280,11 +280,11 @@ import napari
 import numpy as np
 from jax import Array as JaxArray
 
-from mechanomorph.jax.dcm.forces import (
+from mechanomorph.sim.dcm.forces import (
     compute_cell_pressure_forces,
     compute_cell_surface_tension_forces,
 )
-from mechanomorph.jax.dcm.utils import pack_mesh_to_cells
+from mechanomorph.sim.dcm.utils import pack_mesh_to_cells
 from mechanomorph.mesh import make_cube_doublet
 ```
 
