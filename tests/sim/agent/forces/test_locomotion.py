@@ -1,19 +1,22 @@
-import torch
+import jax
+import jax.numpy as jnp
+import numpy as np
 
 from mechanomorph.sim.agent.forces import biased_random_locomotion_force
 
 
 def test_biased_random_locomotion():
     """Test the biased random locomotion force function."""
-
     # set the parameters
-    previous_direction = torch.tensor([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
-    direction_change_probability = torch.tensor([0.5, 0.5])
-    bias_direction = torch.nn.functional.normalize(
-        torch.tensor([[1.0, 1.0, 0.0], [1.0, 1.0, 1.0]]), dim=1
+    previous_direction = jnp.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
+    direction_change_probability = jnp.array([0.5, 0.5])
+    bias_direction = jnp.array([[1.0, 1.0, 0.0], [1.0, 1.0, 1.0]])
+    bias_direction = bias_direction / jnp.linalg.norm(
+        bias_direction, axis=1, keepdims=True
     )
-    bias_constant = torch.tensor([0.5, 0.5])
-    locomotion_speed = torch.tensor([1.0, 1.0])
+    bias_constant = jnp.array([0.5, 0.5])
+    locomotion_speed = jnp.array([1.0, 1.0])
+    valid_agents_mask = jnp.array([True, True])
 
     # call the function
     new_velocity, new_direction = biased_random_locomotion_force(
@@ -22,26 +25,25 @@ def test_biased_random_locomotion():
         bias_direction,
         bias_constant,
         locomotion_speed,
+        valid_agents_mask,
+        jax.random.key(42),
     )
 
     # check the shape of the output
     assert new_velocity.shape == (2, 3)
     assert new_direction.shape == (2, 3)
 
-    # check that the output is a tensor
-    assert isinstance(new_velocity, torch.Tensor)
-    assert isinstance(new_direction, torch.Tensor)
-
 
 def test_biased_random_locomotion_broadcasting():
     """Test that parameters can be broadcasted correctly."""
     # set the parameters
     # this is fully biased motion
-    previous_direction = torch.tensor([[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]])
-    direction_change_probability = torch.tensor([0.0])
-    bias_direction = torch.tensor([1.0, 0.0, 0.0])
-    bias_constant = torch.tensor([1.0])
-    locomotion_speed = torch.tensor([1.0])
+    previous_direction = jnp.array([[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]])
+    direction_change_probability = jnp.array([0.0])
+    bias_direction = jnp.array([1.0, 0.0, 0.0])
+    bias_constant = jnp.array([1.0])
+    locomotion_speed = jnp.array([1.0])
+    valid_agents_mask = jnp.array([True, True])
 
     new_velocity, new_direction = biased_random_locomotion_force(
         previous_direction,
@@ -49,9 +51,11 @@ def test_biased_random_locomotion_broadcasting():
         bias_direction,
         bias_constant,
         locomotion_speed,
+        valid_agents_mask,
+        jax.random.key(42),
     )
 
-    torch.testing.assert_close(
-        new_velocity, torch.tensor([[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]])
+    np.testing.assert_allclose(
+        new_velocity, jnp.array([[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]])
     )
-    torch.testing.assert_close(new_direction, previous_direction)
+    np.testing.assert_allclose(new_direction, previous_direction)

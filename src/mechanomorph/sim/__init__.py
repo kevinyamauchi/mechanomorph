@@ -1,1 +1,1 @@
-"""Components for constructing simulations."""
+"""Jax implementation of the mechanomorph package."""

@@ -48,6 +48,7 @@ for n_vertices in tqdm(n_vertices_to_test):
     _ = find_close_vertices(vertices_i_mps, vertices_j_mps, threshold)
     start_time = time.time()
     result = find_close_vertices(vertices_i_mps, vertices_j_mps, threshold)
+    torch.mps.synchronize()
     time_mps.append(time.time() - start_time)
     assert result.device == torch.device("mps:0")
 

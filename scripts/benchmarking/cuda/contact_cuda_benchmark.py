@@ -6,12 +6,12 @@ import numpy as np
 import torch
 from skimage.measure import marching_cubes
 
-from mechanomorph.sim._deformable_cell_model._contact import (
+from mechanomorph._torch.sim._deformable_cell_model._contact import (
     average_vector_by_group,
     find_contacting_vertices_from_cell_map,
     group_contacting_vertices_union_find,
 )
-from mechanomorph.sim._deformable_cell_model._geometry_utils import (
+from mechanomorph._torch.sim._deformable_cell_model._geometry_utils import (
     find_intersecting_bounding_boxes,
 )
 
@@ -126,15 +126,17 @@ def make_cube_mesh_data(edge_width: float):
 contact_distance_threshold = 0.3e-6
 edge_width = 30
 grid_spacing = 1e-6
-device = "cuda:0"
+device = "cpu"
 
 vertices, faces, face_cell_index, bounding_boxes = make_cube_mesh_data(
     edge_width=edge_width
 )
 
+print(f"n_vertices: {vertices.shape[0]}")
+
 # move to GPU
 vertex_coordinates = vertices.to(device) * grid_spacing
-faces = faces.to("cuda:0")
+faces = faces.to(device)
 face_cell_index = [index.to(device) for index in face_cell_index]
 bounding_boxes = bounding_boxes.to(device)
 
@@ -195,8 +197,9 @@ print("Union find time:", time.time() - start_relabel_vertices_time)
 
 contact_set_original = get_contact_index_set(vertex_labels)
 
+start_move_vertices_time = time.time()
 vertex_coordinates = average_vector_by_group(vertex_coordinates, vertex_labels)
-print(f"Relabel time: {time.time() - start_relabel_vertices_time}")
+print(f"move vertex coordinates time: {time.time() - start_move_vertices_time}")
 
 print("Contact time:", time.time() - start_contact_time)
 

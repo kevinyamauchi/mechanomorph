@@ -3,8 +3,8 @@
 import numpy as np
 from skimage.measure import marching_cubes
 
-from mechanomorph.jax.dcm.utils import compute_face_normal_centroid_dot_product
 from mechanomorph.mesh import resample_mesh_voronoi
+from mechanomorph.sim.dcm.utils import compute_face_normal_centroid_dot_product
 
 
 def make_cube_doublet(

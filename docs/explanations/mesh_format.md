@@ -200,12 +200,12 @@ face_cell_mapping = jnp.array([0,0,0,0,0,0,0,0,0,0,0,0, 1,1,1,1,1,1,1,1,1,1,1,1]
 We can use the `pack_mesh_to_cells()` function to pack this mesh into the required format. This function will handle the remapping of vertices and faces, ensuring that each cell's data is correctly organized and padded as necessary.
 
 ```python
-from mechanomorph.jax.utils import pack_mesh_to_cells
+from mechanomorph.sim.utils import pack_mesh_to_cells
 
-(vertices_packed, faces_packed, valid_vertices_mask, valid_faces_mask, 
+(vertices_packed, faces_packed, valid_vertices_mask, valid_faces_mask,
  valid_cells_mask, vertex_overflow, face_overflow, cell_overflow) = pack_mesh_to_cells(
     vertices=vertices,
-    faces=faces, 
+    faces=faces,
     vertex_cell_mapping=vertex_cell_mapping,
     face_cell_mapping=face_cell_mapping,
     max_vertices_per_cell=8,
