@@ -65,6 +65,28 @@ batched_surface_tension_forces = jax.vmap(
     in_axes=(0, 0, 0, 0, 0, None),
     out_axes=0,
 )
+"""Batched versions of force computation functions.
+
+Parameters
+----------
+vertices : JaxArray
+    (max_vertices_per_cell, 3) vertex coordinates.
+faces : JaxArray
+    (max_faces_per_cell, 3) vertex indices for each face.
+valid_vertices : JaxArray
+    (max_vertices_per_cell,) boolean mask for valid vertices.
+valid_faces : JaxArray
+    (max_faces_per_cell,) boolean mask for valid faces.
+face_surface_tension : JaxArray
+    (max_faces_per_cell,) surface tension value for each face.
+min_allowed_norm : float
+    Minimum allowed norm for numerical stability.
+
+Returns
+-------
+vertex_forces : JaxArray
+    (max_vertices_per_cell, 3) surface tension forces on each vertex.
+"""
 
 
 def calculate_forces(
